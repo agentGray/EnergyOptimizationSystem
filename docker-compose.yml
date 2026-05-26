@@ -1,0 +1,90 @@
+version: "3.8"
+
+services:
+  # PostgreSQL + TimescaleDB
+  db:
+    image: timescale/timescaledb:latest-pg15
+    container_name: energy_db
+    environment:
+      POSTGRES_DB: energy_optimization
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # MQTT Broker (Mosquitto)
+  mqtt:
+    image: eclipse-mosquitto:2
+    container_name: energy_mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto_data:/mosquitto/data
+    restart: unless-stopped
+
+  # FastAPI Backend
+  backend:
+    build:
+      context: .
+      target: backend
+    container_name: energy_backend
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/energy_optimization
+      - MQTT_BROKER_HOST=mqtt
+      - MQTT_BROKER_PORT=1883
+      - APP_ENV=production
+      - DEBUG=false
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      mqtt:
+        condition: service_started
+    restart: unless-stopped
+
+  # Streamlit Dashboard
+  dashboard:
+    build:
+      context: .
+      target: dashboard
+    container_name: energy_dashboard
+    environment:
+      - API_URL=http://backend:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  # IoT Data Pipeline Worker
+  iot-worker:
+    build:
+      context: .
+      target: iot-worker
+    container_name: energy_iot_worker
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/energy_optimization
+      - MQTT_BROKER_HOST=mqtt
+      - MQTT_BROKER_PORT=1883
+    depends_on:
+      db:
+        condition: service_healthy
+      mqtt:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  mosquitto_data:
