@@ -12,9 +12,10 @@ sqlalchemy==2.0.23
 alembic==1.13.0
 # psycopg2-binary==2.9.9  # Uncomment for PostgreSQL
 
-# AWS Services
-boto3>=1.34.0
-aiobotocore>=2.12.0
+# AWS Services (optional - only needed for cloud/AWS deployment)
+# Uncomment these when deploying to AWS:
+# boto3>=1.34.0
+# aiobotocore>=2.12.0
 
 # IoT / MQTT
 paho-mqtt==1.6.1
