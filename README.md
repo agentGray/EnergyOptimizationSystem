@@ -163,6 +163,33 @@ docker compose exec backend alembic upgrade head
 - **SCADA Integration:** Bi-directional communication with factory systems
 - **Operator Approval:** Human-in-the-loop for critical decisions
 
+## Dashboard Screenshots
+
+### Live Dashboard
+![Live Dashboard](screenshots/01_live_dashboard.svg)
+
+Real-time power consumption, KPI metrics, asset status, alerts, and optimization recommendations.
+
+### Anomaly Detection
+![Anomaly Detection](screenshots/02_anomaly_detection.svg)
+
+AI-powered anomaly detection with timeline visualization, severity filtering, confidence scores, and actionable recommendations.
+
+### Load Dispatch & Optimization
+![Load Dispatch](screenshots/03_load_dispatch.svg)
+
+24-hour load profiles, load shifting strategies, peak shaving recommendations, and demand response tracking.
+
+### Asset Health & Monitoring
+![Asset Health](screenshots/04_asset_health.svg)
+
+Asset inventory with health scores, maintenance scheduling, fault tracking, and efficiency monitoring.
+
+### ESG & ISO 50001 Reporting
+![ESG Reporting](screenshots/05_esg_reporting.svg)
+
+Carbon emissions trends, ISO 50001 compliance tracking, year-over-year improvements, and energy source breakdown.
+
 ## Workflow
 
 ### 1. Data Ingestion Flow
