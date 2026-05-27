@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0e1117"/>
+      <stop offset="100%" style="stop-color:#1a1d24"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#262730"/>
+      <stop offset="100%" style="stop-color:#1e1f2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg2)"/>
+
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="250" height="900" fill="#262730"/>
+  <text x="30" y="45" fill="#ffffff" font-size="20" font-weight="bold">⚡ Energy Platform</text>
+  <line x1="15" y1="60" x2="235" y2="60" stroke="#444" stroke-width="1"/>
+  <text x="30" y="90" fill="#aaa" font-size="13" font-weight="bold">Navigation</text>
+  <text x="30" y="120" fill="#ccc" font-size="14">🏠 Live Dashboard</text>
+
+  <rect x="15" y="135" width="220" height="32" rx="5" fill="#ff4b4b" opacity="0.2"/>
+  <text x="30" y="156" fill="#ff4b4b" font-size="14">🔍 Anomaly Detection</text>
+  <text x="30" y="190" fill="#ccc" font-size="14">⚖️ Load Dispatch</text>
+  <text x="30" y="220" fill="#ccc" font-size="14">🏭 Asset Health</text>
+  <text x="30" y="250" fill="#ccc" font-size="14">🌱 ESG &amp; ISO 50001</text>
+
+  <!-- Title -->
+  <text x="290" y="50" fill="#ffffff" font-size="26" font-weight="bold">🔍 Anomaly Detection</text>
+  <text x="290" y="78" fill="#aaa" font-size="14">AI-powered detection of energy waste patterns and equipment issues.</text>
+  <line x1="290" y1="95" x2="1160" y2="95" stroke="#333" stroke-width="1"/>
+
+  <!-- Filters Row -->
+  <rect x="290" y="110" width="180" height="35" rx="5" fill="#262730" stroke="#444" stroke-width="1"/>
+  <text x="305" y="133" fill="#ccc" font-size="12">Severity: All ▾</text>
+  <rect x="490" y="110" width="220" height="35" rx="5" fill="#262730" stroke="#444" stroke-width="1"/>
+  <text x="505" y="133" fill="#ccc" font-size="12">Anomaly Type: All ▾</text>
+  <rect x="730" y="110" width="200" height="35" rx="5" fill="#262730" stroke="#444" stroke-width="1"/>
+  <text x="745" y="133" fill="#ccc" font-size="12">Time Range: Last 24h ▾</text>
+
+  <!-- KPI Cards -->
+  <rect x="290" y="165" width="200" height="80" rx="8" fill="url(#card2)" stroke="#333" stroke-width="1"/>
+  <text x="310" y="190" fill="#aaa" font-size="12">Active Anomalies</text>
+  <text x="310" y="220" fill="#ffffff" font-size="22" font-weight="bold">7</text>
+  <text x="360" y="220" fill="#ff4b4b" font-size="13">+2</text>
+
+  <rect x="510" y="165" width="200" height="80" rx="8" fill="url(#card2)" stroke="#333" stroke-width="1"/>
+  <text x="530" y="190" fill="#aaa" font-size="12">Critical</text>
+  <text x="530" y="220" fill="#ffffff" font-size="22" font-weight="bold">1</text>
+  <text x="560" y="220" fill="#ff4b4b" font-size="13">+1</text>
+
+  <rect x="730" y="165" width="200" height="80" rx="8" fill="url(#card2)" stroke="#333" stroke-width="1"/>
+  <text x="750" y="190" fill="#aaa" font-size="12">Energy Waste</text>
+  <text x="750" y="220" fill="#ffffff" font-size="22" font-weight="bold">342 kWh/day</text>
+
+  <rect x="950" y="165" width="200" height="80" rx="8" fill="url(#card2)" stroke="#333" stroke-width="1"/>
+  <text x="970" y="190" fill="#aaa" font-size="12">Cost Impact</text>
+  <text x="970" y="220" fill="#ffffff" font-size="22" font-weight="bold">$41.04/day</text>
+
+  <!-- Anomaly Timeline Chart -->
+  <text x="290" y="280" fill="#ffffff" font-size="16" font-weight="bold">📈 Anomaly Detection Timeline</text>
+  <rect x="290" y="295" width="870" height="200" rx="8" fill="url(#card2)" stroke="#333" stroke-width="1"/>
+  <!-- Chart axes -->
+  <line x1="330" y1="320" x2="330" y2="470" stroke="#444" stroke-width="0.5"/>
+  <line x1="330" y1="470" x2="1120" y2="470" stroke="#444" stroke-width="0.5"/>
+  <!-- Threshold line -->
+  <line x1="330" y1="345" x2="1120" y2="345" stroke="#ff4b4b" stroke-width="1" stroke-dasharray="5"/>
+  <text x="1125" y="349" fill="#ff4b4b" font-size="10">Threshold: 0.85</text>
+  <!-- Score line (mostly low, with spikes) -->
+  <polyline points="340,460 380,455 420,458 460,450 500,455 540,460 580,458 620,340 660,330 700,335 740,460 780,455 820,458 860,450 900,455 940,325 980,320 1020,460 1060,455 1100,458" fill="none" stroke="#2196F3" stroke-width="2"/>
+  <!-- Anomaly markers (above threshold) -->
+  <circle cx="620" cy="340" r="6" fill="#ff4b4b"/>
+  <circle cx="660" cy="330" r="6" fill="#ff4b4b"/>
+  <circle cx="700" cy="335" r="6" fill="#ff4b4b"/>
+  <circle cx="940" cy="325" r="6" fill="#ff4b4b"/>
+  <circle cx="980" cy="320" r="6" fill="#ff4b4b"/>
+  <!-- Labels -->
+  <text x="340" y="488" fill="#888" font-size="10">48h ago</text>
+  <text x="700" y="488" fill="#888" font-size="10">24h ago</text>
+  <text x="1070" y="488" fill="#888" font-size="10">Now</text>
+  <text x="305" y="348" fill="#888" font-size="9">0.85</text>
+  <text x="305" y="470" fill="#888" font-size="9">0.0</text>
+
+  <!-- Active Anomalies Table -->
+  <text x="290" y="530" fill="#ffffff" font-size="16" font-weight="bold">🚨 Active Anomalies</text>
+  <rect x="290" y="545" width="870" height="210" rx="8" fill="url(#card2)" stroke="#333" stroke-width="1"/>
+  <!-- Table Header -->
+  <rect x="300" y="555" width="850" height="28" rx="4" fill="#1a1d24"/>
+  <text x="315" y="574" fill="#aaa" font-size="11" font-weight="bold">ID</text>
+  <text x="355" y="574" fill="#aaa" font-size="11" font-weight="bold">Asset</text>
+  <text x="480" y="574" fill="#aaa" font-size="11" font-weight="bold">Type</text>
+  <text x="640" y="574" fill="#aaa" font-size="11" font-weight="bold">Severity</text>
+  <text x="740" y="574" fill="#aaa" font-size="11" font-weight="bold">Confidence</text>
+  <text x="840" y="574" fill="#aaa" font-size="11" font-weight="bold">Energy Waste</text>
+  <text x="960" y="574" fill="#aaa" font-size="11" font-weight="bold">Cost Impact</text>
+  <text x="1070" y="574" fill="#aaa" font-size="11" font-weight="bold">Detected</text>
+  <!-- Row 1 -->
+  <text x="315" y="602" fill="#ccc" font-size="11">1</text>
+  <text x="355" y="602" fill="#ccc" font-size="11">HVAC-03</text>
+  <text x="480" y="602" fill="#ccc" font-size="11">HVAC Overcooling</text>
+  <rect x="640" y="590" width="50" height="18" rx="3" fill="#FF9800" opacity="0.3"/>
+  <text x="648" y="604" fill="#FF9800" font-size="10">High</text>
+  <text x="740" y="602" fill="#ccc" font-size="11">92%</text>
+  <text x="840" y="602" fill="#ccc" font-size="11">45 kWh/d</text>
+  <text x="960" y="602" fill="#ccc" font-size="11">$5.40/d</text>
+  <text x="1070" y="602" fill="#ccc" font-size="11">2h ago</text>
+  <!-- Row 2 -->
+  <rect x="300" y="612" width="850" height="28" rx="0" fill="#ff4b4b" opacity="0.05"/>
+  <text x="315" y="632" fill="#ccc" font-size="11">2</text>
+  <text x="355" y="632" fill="#ccc" font-size="11">Compressor-01</text>
+  <text x="480" y="632" fill="#ccc" font-size="11">Power Spike</text>
+  <rect x="640" y="620" width="60" height="18" rx="3" fill="#f44336" opacity="0.3"/>
+  <text x="648" y="634" fill="#f44336" font-size="10">Critical</text>
+  <text x="740" y="632" fill="#ccc" font-size="11">96%</text>
+  <text x="840" y="632" fill="#ccc" font-size="11">120 kWh/d</text>
+  <text x="960" y="632" fill="#ccc" font-size="11">$14.40/d</text>
+  <text x="1070" y="632" fill="#ccc" font-size="11">30min ago</text>
+  <!-- Row 3 -->
+  <text x="315" y="662" fill="#ccc" font-size="11">3</text>
+  <text x="355" y="662" fill="#ccc" font-size="11">Pump-02</text>
+  <text x="480" y="662" fill="#ccc" font-size="11">Efficiency Drop</text>
+  <rect x="640" y="650" width="60" height="18" rx="3" fill="#FFC107" opacity="0.3"/>
+  <text x="648" y="664" fill="#FFC107" font-size="10">Medium</text>
+  <text x="740" y="662" fill="#ccc" font-size="11">85%</text>
+  <text x="840" y="662" fill="#ccc" font-size="11">28 kWh/d</text>
+  <text x="960" y="662" fill="#ccc" font-size="11">$3.36/d</text>
+  <text x="1070" y="662" fill="#ccc" font-size="11">5h ago</text>
+  <!-- Row 4 -->
+  <text x="315" y="692" fill="#ccc" font-size="11">4</text>
+  <text x="355" y="692" fill="#ccc" font-size="11">Motor-05</text>
+  <text x="480" y="692" fill="#ccc" font-size="11">Phantom Load</text>
+  <rect x="640" y="680" width="60" height="18" rx="3" fill="#FFC107" opacity="0.3"/>
+  <text x="648" y="694" fill="#FFC107" font-size="10">Medium</text>
+  <text x="740" y="692" fill="#ccc" font-size="11">88%</text>
+  <text x="840" y="692" fill="#ccc" font-size="11">35 kWh/d</text>
+  <text x="960" y="692" fill="#ccc" font-size="11">$4.20/d</text>
+  <text x="1070" y="692" fill="#ccc" font-size="11">1d ago</text>
+  <!-- Row 5 -->
+  <text x="315" y="722" fill="#ccc" font-size="11">5</text>
+  <text x="355" y="722" fill="#ccc" font-size="11">Lighting-B</text>
+  <text x="480" y="722" fill="#ccc" font-size="11">Unusual Pattern</text>
+  <rect x="640" y="710" width="45" height="18" rx="3" fill="#4CAF50" opacity="0.3"/>
+  <text x="648" y="724" fill="#4CAF50" font-size="10">Low</text>
+  <text x="740" y="722" fill="#ccc" font-size="11">78%</text>
+  <text x="840" y="722" fill="#ccc" font-size="11">12 kWh/d</text>
+  <text x="960" y="722" fill="#ccc" font-size="11">$1.44/d</text>
+  <text x="1070" y="722" fill="#ccc" font-size="11">3h ago</text>
+
+  <!-- Detail Expander -->
+  <text x="290" y="790" fill="#ffffff" font-size="16" font-weight="bold">📋 Anomaly Details</text>
+  <rect x="290" y="805" width="870" height="70" rx="8" fill="#1a1d24" stroke="#f44336" stroke-width="1"/>
+  <text x="310" y="830" fill="#f44336" font-size="13" font-weight="bold">🔴 Compressor-01: Power Spike (Critical)</text>
+  <text x="310" y="852" fill="#aaa" font-size="11">Root Cause: Sudden load change | Baseline: 85 kW | Current: 142 kW (+67%) | Confidence: 96%</text>
+  <rect x="1000" y="815" width="70" height="25" rx="4" fill="#4CAF50" opacity="0.8"/>
+  <text x="1012" y="833" fill="#fff" font-size="11">✅ Fix</text>
+  <rect x="1080" y="815" width="70" height="25" rx="4" fill="#666" opacity="0.8"/>
+  <text x="1090" y="833" fill="#fff" font-size="11">❌ Dismiss</text>
+</svg>
