@@ -24,7 +24,7 @@ Factory Machines
 ## Tech Stack
 
 - **Backend:** FastAPI (Python)
-- **Database:** PostgreSQL + TimescaleDB
+- **Database:** SQLite (local dev) / PostgreSQL + TimescaleDB (production)
 - **AI Engine:** scikit-learn, numpy, pandas
 - **Dashboard:** Streamlit
 - **IoT:** MQTT, OPC-UA, AWS IoT Core
@@ -65,26 +65,93 @@ Factory Machines
 └── requirements.txt
 ```
 
-## Quick Start
+## Quick Start (Local Development — No Docker Required)
+
+### Prerequisites
+
+- Python 3.10 or higher
+- pip (comes with Python)
+- Git
+
+### Step-by-Step Setup
 
 ```bash
 # 1. Clone the repository
 git clone <repo-url>
 cd EnergyOptimizationSystem
 
-# 2. Copy environment file
+# 2. Create a virtual environment
+python -m venv .venv
+
+# 3. Activate the virtual environment
+# On Windows (CMD):
+.venv\Scripts\activate
+# On Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+# On Linux/Mac:
+source .venv/bin/activate
+
+# 4. Install all dependencies
+pip install -r requirements.txt
+
+# 5. Copy environment file
+cp .env.example .env        # Linux/Mac
+copy .env.example .env      # Windows CMD
+
+# 6. Start the FastAPI Backend (Terminal 1)
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+# 7. Start the Streamlit Dashboard (Terminal 2 — open a new terminal)
+# Activate venv first, then:
+streamlit run dashboard/app.py
+```
+
+### Access the Application
+
+| Service | URL |
+|---------|-----|
+| Backend API (Swagger Docs) | http://localhost:8000/docs |
+| Backend API (ReDoc) | http://localhost:8000/redoc |
+| Health Check | http://localhost:8000/health |
+| Streamlit Dashboard | http://localhost:8501 |
+
+### Database
+
+By default, the project uses **SQLite** for local development — no database installation needed. The database file (`energy_optimization.db`) is created automatically when the backend starts.
+
+For production, switch to PostgreSQL + TimescaleDB by changing `.env`:
+```
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/energy_optimization
+```
+
+---
+
+## Running with Docker (Production/Full Stack)
+
+```bash
+# 1. Copy environment file
 cp .env.example .env
 
-# 3. Start with Docker Compose
-docker-compose up -d
+# 2. Start all services
+docker compose up -d --build
 
-# 4. Run database migrations
-docker-compose exec backend alembic upgrade head
+# 3. Run database migrations
+docker compose exec backend alembic upgrade head
 
-# 5. Access the application
+# 4. Access the application
 # Backend API: http://localhost:8000/docs
 # Dashboard: http://localhost:8501
 ```
+
+### Docker Services
+
+| Service | Container | Port | Description |
+|---------|-----------|------|-------------|
+| Database | energy_db | 5432 | PostgreSQL + TimescaleDB |
+| MQTT Broker | energy_mqtt | 1883, 9001 | Eclipse Mosquitto |
+| Backend | energy_backend | 8000 | FastAPI server |
+| Dashboard | energy_dashboard | 8501 | Streamlit UI |
+| IoT Worker | energy_iot_worker | — | Data pipeline consumer |
 
 ## Features
 
@@ -95,3 +162,276 @@ docker-compose exec backend alembic upgrade head
 - **ESG Reporting:** ISO 50001 compliance and sustainability metrics
 - **SCADA Integration:** Bi-directional communication with factory systems
 - **Operator Approval:** Human-in-the-loop for critical decisions
+
+## Dashboard Screenshots
+
+### Live Dashboard
+![Live Dashboard](screenshots/01_live_dashboard.svg)
+
+Real-time power consumption, KPI metrics, asset status, alerts, and optimization recommendations.
+
+### Anomaly Detection
+![Anomaly Detection](screenshots/02_anomaly_detection.svg)
+
+AI-powered anomaly detection with timeline visualization, severity filtering, confidence scores, and actionable recommendations.
+
+### Load Dispatch & Optimization
+![Load Dispatch](screenshots/03_load_dispatch.svg)
+
+24-hour load profiles, load shifting strategies, peak shaving recommendations, and demand response tracking.
+
+### Asset Health & Monitoring
+![Asset Health](screenshots/04_asset_health.svg)
+
+Asset inventory with health scores, maintenance scheduling, fault tracking, and efficiency monitoring.
+
+### ESG & ISO 50001 Reporting
+![ESG Reporting](screenshots/05_esg_reporting.svg)
+
+Carbon emissions trends, ISO 50001 compliance tracking, year-over-year improvements, and energy source breakdown.
+
+## Workflow
+
+### 1. Data Ingestion Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                        FACTORY FLOOR                                 │
+│                                                                     │
+│  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐       │
+│  │ Chiller  │   │  HVAC    │   │Compressor│   │  Pump    │       │
+│  │          │   │          │   │          │   │          │       │
+│  └────┬─────┘   └────┬─────┘   └────┬─────┘   └────┬─────┘       │
+│       │               │               │               │             │
+│  ┌────▼─────────────────────────────────────────────▼────┐         │
+│  │              Sensors + Smart Meters                     │         │
+│  │  (Temperature, Pressure, Voltage, Current, Power)      │         │
+│  └────────────────────────┬───────────────────────────────┘         │
+│                           │                                         │
+│  ┌────────────────────────▼───────────────────────────────┐         │
+│  │                PLC Controllers                          │         │
+│  └────────────────────────┬───────────────────────────────┘         │
+│                           │                                         │
+│  ┌────────────────────────▼───────────────────────────────┐         │
+│  │                 SCADA System                            │         │
+│  └────────────────────────┬───────────────────────────────┘         │
+└───────────────────────────┼─────────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                     IoT GATEWAY LAYER                                │
+│                                                                     │
+│  ┌─────────────────┐              ┌─────────────────┐              │
+│  │   MQTT Gateway  │              │  OPC-UA Gateway  │              │
+│  │   (Port 1883)   │              │   (Port 4840)    │              │
+│  └────────┬────────┘              └────────┬─────────┘              │
+└───────────┼────────────────────────────────┼────────────────────────┘
+            │                                │
+            ▼                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                        AWS CLOUD                                     │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────┐       │
+│  │                  AWS IoT Core                            │       │
+│  │           (MQTT Broker + TLS Auth)                       │       │
+│  └────────────────────────┬────────────────────────────────┘       │
+│                           │                                         │
+│  ┌────────────────────────▼───────────────────────────────┐         │
+│  │               AWS SQS Queue                             │         │
+│  │        (Reliable message buffering)                     │         │
+│  └────────────────────────┬───────────────────────────────┘         │
+│                           │                                         │
+│  ┌────────────────────────▼───────────────────────────────┐         │
+│  │            FastAPI Backend (ECS Fargate)                 │         │
+│  │                                                         │         │
+│  │  ┌──────────┐  ┌───────────┐  ┌──────────────────┐    │         │
+│  │  │ API Layer│  │ Services  │  │  Data Pipeline   │    │         │
+│  │  └──────────┘  └───────────┘  └──────────────────┘    │         │
+│  └────────────────────────┬───────────────────────────────┘         │
+│                           │                                         │
+│  ┌────────────────────────▼───────────────────────────────┐         │
+│  │         PostgreSQL + TimescaleDB                        │         │
+│  │    (Operational data + Time-series hypertables)         │         │
+│  └────────────────────────────────────────────────────────┘         │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 2. AI Analysis & Optimization Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                      AI ENGINE                                       │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────┐       │
+│  │              Anomaly Detection                           │       │
+│  │                                                         │       │
+│  │  ┌──────────┐  ┌───────────────┐  ┌───────────────┐   │       │
+│  │  │ Z-Score  │  │Isolation Forest│  │Pattern Rules  │   │       │
+│  │  │Detection │  │  (ML-based)   │  │(Domain Logic) │   │       │
+│  │  └──────────┘  └───────────────┘  └───────────────┘   │       │
+│  └──────────────────────────┬──────────────────────────────┘       │
+│                             │                                       │
+│  Detected Anomalies:        │                                       │
+│  • Phantom Loads            │                                       │
+│  • HVAC Overcooling         │                                       │
+│  • Air Leaks                │                                       │
+│  • Voltage Imbalance        │                                       │
+│  • Furnace Cycling          │                                       │
+│  • Power Spikes             │                                       │
+│                             ▼                                       │
+│  ┌─────────────────────────────────────────────────────────┐       │
+│  │             Energy Optimizer                             │       │
+│  │                                                         │       │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌─────────────┐  │       │
+│  │  │Load Shifting │  │Peak Shaving  │  │ Setpoint    │  │       │
+│  │  │(Off-peak)    │  │(Demand Limit)│  │ Adjustment  │  │       │
+│  │  └──────────────┘  └──────────────┘  └─────────────┘  │       │
+│  │  ┌──────────────┐  ┌──────────────┐                    │       │
+│  │  │Equipment     │  │Efficiency    │                    │       │
+│  │  │Scheduling    │  │Optimization  │                    │       │
+│  │  └──────────────┘  └──────────────┘                    │       │
+│  └──────────────────────────┬──────────────────────────────┘       │
+│                             │                                       │
+│                             ▼                                       │
+│  ┌─────────────────────────────────────────────────────────┐       │
+│  │            Load Forecasting                             │       │
+│  │  (Predict future demand using historical patterns)      │       │
+│  └──────────────────────────┬──────────────────────────────┘       │
+│                             │                                       │
+│                             ▼                                       │
+│  ┌─────────────────────────────────────────────────────────┐       │
+│  │          Recommendation Engine                          │       │
+│  │  (Generate actionable SCADA commands with savings)      │       │
+│  └──────────────────────────┬──────────────────────────────┘       │
+└─────────────────────────────┼───────────────────────────────────────┘
+                              │
+                              ▼
+```
+
+### 3. Approval & Execution Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                OPERATOR APPROVAL WORKFLOW                            │
+│                                                                     │
+│        ┌──────────────────────────────────────┐                    │
+│        │    AI Recommendation Generated       │                    │
+│        └───────────────────┬──────────────────┘                    │
+│                            │                                        │
+│                            ▼                                        │
+│        ┌──────────────────────────────────────┐                    │
+│        │     Risk Assessment                  │                    │
+│        │  (Low / Medium / High / Critical)    │                    │
+│        └───────────┬──────────────┬───────────┘                    │
+│                    │              │                                  │
+│          Low Risk  │              │  Medium/High Risk                │
+│          + High    │              │                                  │
+│          Confidence│              │                                  │
+│                    ▼              ▼                                  │
+│        ┌────────────────┐  ┌──────────────────────────┐            │
+│        │ Auto-Approve   │  │ Operator Dashboard       │            │
+│        │ (Non-critical  │  │                          │            │
+│        │  assets only)  │  │  ┌────────┐ ┌────────┐  │            │
+│        └───────┬────────┘  │  │Approve │ │Reject  │  │            │
+│                │           │  └───┬────┘ └───┬────┘  │            │
+│                │           └──────┼──────────┼───────┘            │
+│                │                  │          │                      │
+│                ▼                  ▼          ▼                      │
+│        ┌────────────────────────────┐  ┌──────────┐               │
+│        │    Safety Checks           │  │ Logged & │               │
+│        │  • Command validation      │  │ Archived │               │
+│        │  • Parameter limits        │  └──────────┘               │
+│        │  • Rate limiting           │                              │
+│        │  • Asset type rules        │                              │
+│        └───────────────┬────────────┘                              │
+│                        │                                            │
+│                        ▼                                            │
+│        ┌──────────────────────────────────────┐                    │
+│        │       SCADA Write-back               │                    │
+│        │                                      │                    │
+│        │  ┌────────────┐  ┌────────────┐     │                    │
+│        │  │  OPC-UA    │  │   MQTT     │     │                    │
+│        │  │  Protocol  │  │  Protocol  │     │                    │
+│        │  └─────┬──────┘  └─────┬──────┘     │                    │
+│        └────────┼───────────────┼─────────────┘                    │
+│                 │               │                                    │
+└─────────────────┼───────────────┼────────────────────────────────────┘
+                  │               │
+                  ▼               ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│              FACTORY EQUIPMENT CONTROL                               │
+│                                                                     │
+│  • Adjust HVAC setpoints        • Start/Stop equipment              │
+│  • Reduce compressor load       • Shift loads to off-peak           │
+│  • Dim lighting systems         • Adjust motor speeds               │
+│  • Optimize furnace cycles      • Control pump flow rates           │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 4. Dashboard & Monitoring Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                   STREAMLIT DASHBOARD                                │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────┐       │
+│  │  🏠 Live Dashboard                                      │       │
+│  │  Real-time power consumption, alerts, KPIs              │       │
+│  └─────────────────────────────────────────────────────────┘       │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────┐       │
+│  │  🔍 Anomaly Detection                                   │       │
+│  │  Active anomalies, timeline, severity, root causes      │       │
+│  └─────────────────────────────────────────────────────────┘       │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────┐       │
+│  │  ⚖️ Load Dispatch                                       │       │
+│  │  Load profile, optimization strategies, demand response │       │
+│  └─────────────────────────────────────────────────────────┘       │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────┐       │
+│  │  🏭 Asset Health                                        │       │
+│  │  Health scores, maintenance schedule, status overview   │       │
+│  └─────────────────────────────────────────────────────────┘       │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────┐       │
+│  │  🌱 ESG & ISO 50001                                     │       │
+│  │  Carbon emissions, compliance, year-over-year progress  │       │
+│  └─────────────────────────────────────────────────────────┘       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 5. End-to-End Data Flow Summary
+
+```
+Step 1: Machine sensors generate readings (every 5 seconds)
+         ↓
+Step 2: PLC collects sensor data from multiple sensors
+         ↓
+Step 3: SCADA aggregates PLC data and provides supervisory view
+         ↓
+Step 4: IoT Gateway converts data to MQTT/OPC-UA messages
+         ↓
+Step 5: AWS IoT Core receives messages (TLS encrypted, cert auth)
+         ↓
+Step 6: IoT Rules forward messages to AWS SQS queue
+         ↓
+Step 7: FastAPI backend consumes SQS messages (batch processing)
+         ↓
+Step 8: Data validated, enriched, and stored in TimescaleDB
+         ↓
+Step 9: AI Engine runs periodic analysis:
+         • Anomaly detection (every 5 minutes)
+         • Optimization analysis (every 15 minutes)
+         • Load forecasting (every hour)
+         ↓
+Step 10: Recommendations generated with estimated savings
+         ↓
+Step 11: Operator reviews on Streamlit dashboard
+         ↓
+Step 12: Approved commands sent to SCADA via write-back
+         ↓
+Step 13: Equipment adjusts operation (setpoints, scheduling)
+         ↓
+Step 14: Savings tracked and reported in ESG dashboard
+```
