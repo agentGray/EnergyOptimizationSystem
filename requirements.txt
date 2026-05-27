@@ -13,8 +13,8 @@ alembic==1.13.0
 # psycopg2-binary==2.9.9  # Uncomment for PostgreSQL
 
 # AWS Services
-boto3==1.34.0
-aiobotocore==2.8.0
+boto3>=1.34.0
+aiobotocore>=2.12.0
 
 # IoT / MQTT
 paho-mqtt==1.6.1
