@@ -1,136 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" font-family="Segoe UI, Arial, sans-serif">
-  <defs>
-    <linearGradient id="bg3" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#0e1117"/>
-      <stop offset="100%" style="stop-color:#1a1d24"/>
-    </linearGradient>
-    <linearGradient id="card3" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#262730"/>
-      <stop offset="100%" style="stop-color:#1e1f2a"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="900" fill="url(#bg3)"/>
-  <!-- Sidebar -->
-  <rect x="0" y="0" width="250" height="900" fill="#262730"/>
-  <text x="30" y="45" fill="#ffffff" font-size="20" font-weight="bold">⚡ Energy Platform</text>
-  <line x1="15" y1="60" x2="235" y2="60" stroke="#444" stroke-width="1"/>
-  <text x="30" y="120" fill="#ccc" font-size="14">🏠 Live Dashboard</text>
-  <text x="30" y="150" fill="#ccc" font-size="14">🔍 Anomaly Detection</text>
-  <rect x="15" y="163" width="220" height="32" rx="5" fill="#ff4b4b" opacity="0.2"/>
-  <text x="30" y="184" fill="#ff4b4b" font-size="14">⚖️ Load Dispatch</text>
-  <text x="30" y="218" fill="#ccc" font-size="14">🏭 Asset Health</text>
-  <text x="30" y="248" fill="#ccc" font-size="14">🌱 ESG &amp; ISO 50001</text>
-
-  <!-- Title -->
-  <text x="290" y="50" fill="#ffffff" font-size="26" font-weight="bold">⚖️ Load Dispatch &amp; Optimization</text>
-  <text x="290" y="78" fill="#aaa" font-size="14">Intelligent load management, peak shaving, and demand response.</text>
-  <line x1="290" y1="95" x2="1160" y2="95" stroke="#333" stroke-width="1"/>
-
-  <!-- KPI Cards -->
-  <rect x="290" y="110" width="200" height="80" rx="8" fill="url(#card3)" stroke="#333" stroke-width="1"/>
-  <text x="310" y="138" fill="#aaa" font-size="12">Current Demand</text>
-  <text x="310" y="165" fill="#ffffff" font-size="20" font-weight="bold">2,450 kW</text>
-  <text x="310" y="183" fill="#4CAF50" font-size="12">▼ -120 kW</text>
-
-  <rect x="510" y="110" width="200" height="80" rx="8" fill="url(#card3)" stroke="#333" stroke-width="1"/>
-  <text x="530" y="138" fill="#aaa" font-size="12">Demand Limit</text>
-  <text x="530" y="165" fill="#ffffff" font-size="20" font-weight="bold">3,000 kW</text>
-
-  <rect x="730" y="110" width="200" height="80" rx="8" fill="url(#card3)" stroke="#333" stroke-width="1"/>
-  <text x="750" y="138" fill="#aaa" font-size="12">Peak Today</text>
-  <text x="750" y="165" fill="#ffffff" font-size="20" font-weight="bold">2,890 kW</text>
-
-  <rect x="950" y="110" width="200" height="80" rx="8" fill="url(#card3)" stroke="#333" stroke-width="1"/>
-  <text x="970" y="138" fill="#aaa" font-size="12">Load Factor</text>
-  <text x="970" y="165" fill="#ffffff" font-size="20" font-weight="bold">78%</text>
-  <text x="970" y="183" fill="#4CAF50" font-size="12">▲ +3%</text>
-
-  <!-- 24-Hour Load Profile Chart -->
-  <text x="290" y="225" fill="#ffffff" font-size="16" font-weight="bold">📊 24-Hour Load Profile</text>
-  <rect x="290" y="240" width="870" height="250" rx="8" fill="url(#card3)" stroke="#333" stroke-width="1"/>
-  <!-- Axes -->
-  <line x1="340" y1="265" x2="340" y2="465" stroke="#444" stroke-width="0.5"/>
-  <line x1="340" y1="465" x2="1120" y2="465" stroke="#444" stroke-width="0.5"/>
-  <!-- Demand limit line -->
-  <line x1="340" y1="280" x2="1120" y2="280" stroke="#f44336" stroke-width="1.5" stroke-dasharray="6"/>
-  <text x="1125" y="284" fill="#f44336" font-size="9">3000 kW</text>
-  <!-- Actual load curve -->
-  <polyline points="360,420 400,425 440,430 480,400 520,365 560,335 600,310 640,295 680,290 720,285 760,290 800,300 840,320 880,345 920,365 960,390 1000,410 1040,430 1080,425 1100,420" fill="none" stroke="#ff4b4b" stroke-width="2.5"/>
-  <!-- Optimized load curve -->
-  <polyline points="360,435 400,438 440,442 480,418 520,388 560,362 600,340 640,328 680,325 720,322 760,328 800,335 840,352 880,372 920,388 960,408 1000,425 1040,440 1080,438 1100,435" fill="none" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4"/>
-  <!-- Legend -->
-  <line x1="400" y1="480" x2="420" y2="480" stroke="#ff4b4b" stroke-width="2.5"/>
-  <text x="425" y="484" fill="#ccc" font-size="11">Actual (kW)</text>
-  <line x1="530" y1="480" x2="550" y2="480" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4"/>
-  <text x="555" y="484" fill="#ccc" font-size="11">Optimized (kW)</text>
-  <line x1="680" y1="480" x2="700" y2="480" stroke="#f44336" stroke-width="1.5" stroke-dasharray="6"/>
-  <text x="705" y="484" fill="#ccc" font-size="11">Demand Limit</text>
-  <!-- X labels -->
-  <text x="360" y="478" fill="#888" font-size="9">0</text>
-  <text x="520" y="478" fill="#888" font-size="9">6</text>
-  <text x="680" y="478" fill="#888" font-size="9">12</text>
-  <text x="840" y="478" fill="#888" font-size="9">18</text>
-  <text x="1000" y="478" fill="#888" font-size="9">24h</text>
-
-  <!-- Load Shifting Table -->
-  <text x="290" y="530" fill="#ffffff" font-size="16" font-weight="bold">💡 Load Shifting</text>
-  <rect x="290" y="545" width="420" height="150" rx="8" fill="url(#card3)" stroke="#333" stroke-width="1"/>
-  <rect x="300" y="555" width="400" height="25" rx="3" fill="#1a1d24"/>
-  <text x="315" y="572" fill="#aaa" font-size="10" font-weight="bold">Asset</text>
-  <text x="440" y="572" fill="#aaa" font-size="10" font-weight="bold">Current</text>
-  <text x="530" y="572" fill="#aaa" font-size="10" font-weight="bold">Shift To</text>
-  <text x="635" y="572" fill="#aaa" font-size="10" font-weight="bold">Savings</text>
-  <text x="315" y="600" fill="#ccc" font-size="11">Compressor-02</text>
-  <text x="440" y="600" fill="#ccc" font-size="11">85 kW</text>
-  <text x="530" y="600" fill="#ccc" font-size="11">22:00-06:00</text>
-  <text x="635" y="600" fill="#4CAF50" font-size="11">$45/day</text>
-  <text x="315" y="625" fill="#ccc" font-size="11">Pump-04</text>
-  <text x="440" y="625" fill="#ccc" font-size="11">45 kW</text>
-  <text x="530" y="625" fill="#ccc" font-size="11">23:00-05:00</text>
-  <text x="635" y="625" fill="#4CAF50" font-size="11">$22/day</text>
-  <text x="315" y="650" fill="#ccc" font-size="11">Chiller-02</text>
-  <text x="440" y="650" fill="#ccc" font-size="11">120 kW</text>
-  <text x="530" y="650" fill="#ccc" font-size="11">21:00-07:00</text>
-  <text x="635" y="650" fill="#4CAF50" font-size="11">$58/day</text>
-
-  <!-- Peak Shaving Table -->
-  <text x="740" y="530" fill="#ffffff" font-size="16" font-weight="bold">⚡ Peak Shaving</text>
-  <rect x="740" y="545" width="420" height="150" rx="8" fill="url(#card3)" stroke="#333" stroke-width="1"/>
-  <rect x="750" y="555" width="400" height="25" rx="3" fill="#1a1d24"/>
-  <text x="765" y="572" fill="#aaa" font-size="10" font-weight="bold">Asset</text>
-  <text x="880" y="572" fill="#aaa" font-size="10" font-weight="bold">Reduce By</text>
-  <text x="980" y="572" fill="#aaa" font-size="10" font-weight="bold">Savings</text>
-  <text x="1070" y="572" fill="#aaa" font-size="10" font-weight="bold">Impact</text>
-  <text x="765" y="600" fill="#ccc" font-size="11">HVAC-01</text>
-  <text x="880" y="600" fill="#ccc" font-size="11">15%</text>
-  <text x="980" y="600" fill="#ccc" font-size="11">22 kW</text>
-  <text x="1070" y="600" fill="#4CAF50" font-size="11">Low</text>
-  <text x="765" y="625" fill="#ccc" font-size="11">HVAC-02</text>
-  <text x="880" y="625" fill="#ccc" font-size="11">10%</text>
-  <text x="980" y="625" fill="#ccc" font-size="11">18 kW</text>
-  <text x="1070" y="625" fill="#4CAF50" font-size="11">Low</text>
-  <text x="765" y="650" fill="#ccc" font-size="11">Lighting-A</text>
-  <text x="880" y="650" fill="#ccc" font-size="11">30%</text>
-  <text x="980" y="650" fill="#ccc" font-size="11">12 kW</text>
-  <text x="1070" y="650" fill="#4CAF50" font-size="11">None</text>
-
-  <!-- Demand Response & Savings -->
-  <text x="290" y="730" fill="#ffffff" font-size="16" font-weight="bold">⚡ Demand Response Status</text>
-  <rect x="290" y="745" width="420" height="130" rx="8" fill="url(#card3)" stroke="#333" stroke-width="1"/>
-  <text x="310" y="775" fill="#ccc" font-size="12">Program: Peak Demand Reduction</text>
-  <text x="310" y="798" fill="#4CAF50" font-size="12">Status: 🟢 Active</text>
-  <text x="310" y="821" fill="#ccc" font-size="12">Target: 200 kW | Achieved: 185 kW (92.5%)</text>
-  <text x="310" y="844" fill="#ccc" font-size="12">Event Window: 14:00 - 20:00</text>
-  <!-- Progress bar -->
-  <rect x="310" y="855" width="380" height="8" rx="4" fill="#333"/>
-  <rect x="310" y="855" width="352" height="8" rx="4" fill="#4CAF50"/>
-
-  <text x="740" y="730" fill="#ffffff" font-size="16" font-weight="bold">💰 Savings Summary</text>
-  <rect x="740" y="745" width="420" height="130" rx="8" fill="url(#card3)" stroke="#333" stroke-width="1"/>
-  <text x="770" y="778" fill="#aaa" font-size="12">Daily Savings</text>
-  <text x="770" y="803" fill="#4CAF50" font-size="22" font-weight="bold">$312.50</text>
-  <text x="950" y="778" fill="#aaa" font-size="12">Monthly Projected</text>
-  <text x="950" y="803" fill="#4CAF50" font-size="22" font-weight="bold">$9,375</text>
-  <text x="770" y="840" fill="#aaa" font-size="12">CO₂ Reduced</text>
-  <text x="770" y="865" fill="#2196F3" font-size="22" font-weight="bold">156 kg/day</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1200" height="800" fill="#ffffff"/>
+  <rect x="0" y="0" width="250" height="800" fill="#f8f9fa"/>
+  <rect x="249" y="0" width="1" height="800" fill="#e0e0e0"/>
+  <text x="30" y="45" fill="#333333" font-size="20" font-weight="bold">⚡ Energy Platform</text>
+  <line x1="15" y1="60" x2="235" y2="60" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="30" y="120" fill="#555555" font-size="14">🏠 Live Dashboard</text>
+  <text x="30" y="150" fill="#555555" font-size="14">🔍 Anomaly Detection</text>
+  <rect x="15" y="163" width="220" height="32" rx="5" fill="#e3f2fd"/>
+  <text x="30" y="184" fill="#1565c0" font-size="14" font-weight="bold">⚖️ Load Dispatch</text>
+  <text x="30" y="218" fill="#555555" font-size="14">🏭 Asset Health</text>
+  <text x="30" y="248" fill="#555555" font-size="14">🌱 ESG &amp; ISO 50001</text>
+  <text x="290" y="50" fill="#1a1a1a" font-size="26" font-weight="bold">⚖️ Load Dispatch &amp; Optimization</text>
+  <text x="290" y="78" fill="#666666" font-size="14">Intelligent load management, peak shaving, and demand response.</text>
+  <line x1="290" y1="95" x2="1160" y2="95" stroke="#eeeeee" stroke-width="1"/>
+  <rect x="290" y="110" width="200" height="80" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="290" y="110" width="200" height="4" rx="2" fill="#1565c0"/>
+  <text x="310" y="138" fill="#666666" font-size="12">Current Demand</text>
+  <text x="310" y="165" fill="#1a1a1a" font-size="20" font-weight="bold">2,450 kW</text>
+  <text x="310" y="183" fill="#2e7d32" font-size="12">▼ -120 kW</text>
+  <rect x="510" y="110" width="200" height="80" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="510" y="110" width="200" height="4" rx="2" fill="#d32f2f"/>
+  <text x="530" y="138" fill="#666666" font-size="12">Demand Limit</text>
+  <text x="530" y="165" fill="#1a1a1a" font-size="20" font-weight="bold">3,000 kW</text>
+  <rect x="730" y="110" width="200" height="80" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="730" y="110" width="200" height="4" rx="2" fill="#f57c00"/>
+  <text x="750" y="138" fill="#666666" font-size="12">Peak Today</text>
+  <text x="750" y="165" fill="#1a1a1a" font-size="20" font-weight="bold">2,890 kW</text>
+  <rect x="950" y="110" width="200" height="80" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="950" y="110" width="200" height="4" rx="2" fill="#2e7d32"/>
+  <text x="970" y="138" fill="#666666" font-size="12">Load Factor</text>
+  <text x="970" y="165" fill="#1a1a1a" font-size="20" font-weight="bold">78%</text>
+  <text x="970" y="183" fill="#2e7d32" font-size="12">▲ +3%</text>
+  <text x="290" y="225" fill="#1a1a1a" font-size="16" font-weight="bold">📊 24-Hour Load Profile</text>
+  <rect x="290" y="240" width="870" height="220" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="340" y1="260" x2="340" y2="435" stroke="#eeeeee" stroke-width="0.5"/>
+  <line x1="340" y1="435" x2="1120" y2="435" stroke="#eeeeee" stroke-width="0.5"/>
+  <line x1="340" y1="270" x2="1120" y2="270" stroke="#d32f2f" stroke-width="1.5" stroke-dasharray="6"/>
+  <text x="1125" y="274" fill="#d32f2f" font-size="9">3000 kW Limit</text>
+  <polyline points="360,390 400,395 440,400 480,370 520,340 560,315 600,295 640,285 680,280 720,278 760,282 800,295 840,315 880,340 920,360 960,380 1000,395 1040,400 1080,395" fill="none" stroke="#1565c0" stroke-width="2.5"/>
+  <polyline points="360,405 400,408 440,412 480,388 520,360 560,338 600,320 640,312 680,308 720,306 760,310 800,320 840,338 880,358 920,375 960,395 1000,408 1040,412 1080,408" fill="none" stroke="#2e7d32" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="400" y1="448" x2="420" y2="448" stroke="#1565c0" stroke-width="2.5"/>
+  <text x="425" y="452" fill="#555555" font-size="11">Actual (kW)</text>
+  <line x1="540" y1="448" x2="560" y2="448" stroke="#2e7d32" stroke-width="2" stroke-dasharray="4"/>
+  <text x="565" y="452" fill="#555555" font-size="11">Optimized (kW)</text>
+  <line x1="700" y1="448" x2="720" y2="448" stroke="#d32f2f" stroke-width="1.5" stroke-dasharray="6"/>
+  <text x="725" y="452" fill="#555555" font-size="11">Demand Limit</text>
+  <text x="290" y="500" fill="#1a1a1a" font-size="16" font-weight="bold">💡 Load Shifting</text>
+  <rect x="290" y="515" width="420" height="120" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="300" y="525" width="400" height="25" rx="3" fill="#f5f5f5"/>
+  <text x="315" y="542" fill="#666666" font-size="10" font-weight="bold">Asset</text>
+  <text x="440" y="542" fill="#666666" font-size="10" font-weight="bold">Current</text>
+  <text x="530" y="542" fill="#666666" font-size="10" font-weight="bold">Shift To</text>
+  <text x="635" y="542" fill="#666666" font-size="10" font-weight="bold">Savings</text>
+  <text x="315" y="570" fill="#333333" font-size="11">Compressor-02</text>
+  <text x="440" y="570" fill="#333333" font-size="11">85 kW</text>
+  <text x="530" y="570" fill="#333333" font-size="11">22:00-06:00</text>
+  <text x="635" y="570" fill="#2e7d32" font-size="11" font-weight="bold">$45/day</text>
+  <text x="315" y="595" fill="#333333" font-size="11">Pump-04</text>
+  <text x="440" y="595" fill="#333333" font-size="11">45 kW</text>
+  <text x="530" y="595" fill="#333333" font-size="11">23:00-05:00</text>
+  <text x="635" y="595" fill="#2e7d32" font-size="11" font-weight="bold">$22/day</text>
+  <text x="315" y="620" fill="#333333" font-size="11">Chiller-02</text>
+  <text x="440" y="620" fill="#333333" font-size="11">120 kW</text>
+  <text x="530" y="620" fill="#333333" font-size="11">21:00-07:00</text>
+  <text x="635" y="620" fill="#2e7d32" font-size="11" font-weight="bold">$58/day</text>
+  <text x="740" y="500" fill="#1a1a1a" font-size="16" font-weight="bold">💰 Savings Summary</text>
+  <rect x="740" y="515" width="420" height="120" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="770" y="548" fill="#666666" font-size="12">Daily Savings</text>
+  <text x="770" y="575" fill="#2e7d32" font-size="24" font-weight="bold">$312.50</text>
+  <text x="950" y="548" fill="#666666" font-size="12">Monthly Projected</text>
+  <text x="950" y="575" fill="#2e7d32" font-size="24" font-weight="bold">$9,375</text>
+  <text x="770" y="610" fill="#666666" font-size="12">CO₂ Reduced</text>
+  <text x="770" y="635" fill="#1565c0" font-size="20" font-weight="bold">156 kg/day</text>
+  <text x="290" y="670" fill="#1a1a1a" font-size="16" font-weight="bold">⚡ Demand Response: 🟢 Active</text>
+  <rect x="290" y="685" width="870" height="50" rx="8" fill="#e8f5e9" stroke="#a5d6a7" stroke-width="1"/>
+  <text x="310" y="715" fill="#2e7d32" font-size="13">Target: 200 kW | Achieved: 185 kW (92.5%) | Event: 14:00-20:00</text>
+  <rect x="750" y="700" width="380" height="8" rx="4" fill="#c8e6c9"/>
+  <rect x="750" y="700" width="352" height="8" rx="4" fill="#2e7d32"/>
 </svg>
