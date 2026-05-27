@@ -24,7 +24,7 @@ Factory Machines
 ## Tech Stack
 
 - **Backend:** FastAPI (Python)
-- **Database:** PostgreSQL + TimescaleDB
+- **Database:** SQLite (local dev) / PostgreSQL + TimescaleDB (production)
 - **AI Engine:** scikit-learn, numpy, pandas
 - **Dashboard:** Streamlit
 - **IoT:** MQTT, OPC-UA, AWS IoT Core
@@ -65,26 +65,93 @@ Factory Machines
 └── requirements.txt
 ```
 
-## Quick Start
+## Quick Start (Local Development — No Docker Required)
+
+### Prerequisites
+
+- Python 3.10 or higher
+- pip (comes with Python)
+- Git
+
+### Step-by-Step Setup
 
 ```bash
 # 1. Clone the repository
 git clone <repo-url>
 cd EnergyOptimizationSystem
 
-# 2. Copy environment file
+# 2. Create a virtual environment
+python -m venv .venv
+
+# 3. Activate the virtual environment
+# On Windows (CMD):
+.venv\Scripts\activate
+# On Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+# On Linux/Mac:
+source .venv/bin/activate
+
+# 4. Install all dependencies
+pip install -r requirements.txt
+
+# 5. Copy environment file
+cp .env.example .env        # Linux/Mac
+copy .env.example .env      # Windows CMD
+
+# 6. Start the FastAPI Backend (Terminal 1)
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+# 7. Start the Streamlit Dashboard (Terminal 2 — open a new terminal)
+# Activate venv first, then:
+streamlit run dashboard/app.py
+```
+
+### Access the Application
+
+| Service | URL |
+|---------|-----|
+| Backend API (Swagger Docs) | http://localhost:8000/docs |
+| Backend API (ReDoc) | http://localhost:8000/redoc |
+| Health Check | http://localhost:8000/health |
+| Streamlit Dashboard | http://localhost:8501 |
+
+### Database
+
+By default, the project uses **SQLite** for local development — no database installation needed. The database file (`energy_optimization.db`) is created automatically when the backend starts.
+
+For production, switch to PostgreSQL + TimescaleDB by changing `.env`:
+```
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/energy_optimization
+```
+
+---
+
+## Running with Docker (Production/Full Stack)
+
+```bash
+# 1. Copy environment file
 cp .env.example .env
 
-# 3. Start with Docker Compose
-docker-compose up -d
+# 2. Start all services
+docker compose up -d --build
 
-# 4. Run database migrations
-docker-compose exec backend alembic upgrade head
+# 3. Run database migrations
+docker compose exec backend alembic upgrade head
 
-# 5. Access the application
+# 4. Access the application
 # Backend API: http://localhost:8000/docs
 # Dashboard: http://localhost:8501
 ```
+
+### Docker Services
+
+| Service | Container | Port | Description |
+|---------|-----------|------|-------------|
+| Database | energy_db | 5432 | PostgreSQL + TimescaleDB |
+| MQTT Broker | energy_mqtt | 1883, 9001 | Eclipse Mosquitto |
+| Backend | energy_backend | 8000 | FastAPI server |
+| Dashboard | energy_dashboard | 8501 | Streamlit UI |
+| IoT Worker | energy_iot_worker | — | Data pipeline consumer |
 
 ## Features
 
@@ -95,6 +162,33 @@ docker-compose exec backend alembic upgrade head
 - **ESG Reporting:** ISO 50001 compliance and sustainability metrics
 - **SCADA Integration:** Bi-directional communication with factory systems
 - **Operator Approval:** Human-in-the-loop for critical decisions
+
+## Dashboard Screenshots
+
+### Live Dashboard
+![Live Dashboard](screenshots/01_live_dashboard.svg)
+
+Real-time power consumption, KPI metrics, asset status, alerts, and optimization recommendations.
+
+### Anomaly Detection
+![Anomaly Detection](screenshots/02_anomaly_detection.svg)
+
+AI-powered anomaly detection with timeline visualization, severity filtering, confidence scores, and actionable recommendations.
+
+### Load Dispatch & Optimization
+![Load Dispatch](screenshots/03_load_dispatch.svg)
+
+24-hour load profiles, load shifting strategies, peak shaving recommendations, and demand response tracking.
+
+### Asset Health & Monitoring
+![Asset Health](screenshots/04_asset_health.svg)
+
+Asset inventory with health scores, maintenance scheduling, fault tracking, and efficiency monitoring.
+
+### ESG & ISO 50001 Reporting
+![ESG Reporting](screenshots/05_esg_reporting.svg)
+
+Carbon emissions trends, ISO 50001 compliance tracking, year-over-year improvements, and energy source breakdown.
 
 ## Workflow
 
