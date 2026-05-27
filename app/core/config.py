@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     DATABASE_NAME: str = "energy_optimization"
     DATABASE_USER: str = "postgres"
     DATABASE_PASSWORD: str = "postgres"
-    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/energy_optimization"
+    DATABASE_URL: str = "sqlite:///./energy_optimization.db"
 
     # AWS
     AWS_REGION: str = "us-east-1"
