@@ -1,147 +1,127 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" font-family="Segoe UI, Arial, sans-serif">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#0e1117"/>
-      <stop offset="100%" style="stop-color:#1a1d24"/>
-    </linearGradient>
-    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#262730"/>
-      <stop offset="100%" style="stop-color:#1e1f2a"/>
-    </linearGradient>
-    <linearGradient id="chart_line" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#ff4b4b"/>
-      <stop offset="100%" style="stop-color:#ff6b6b"/>
-    </linearGradient>
-  </defs>
   <!-- Background -->
-  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="#ffffff"/>
 
   <!-- Sidebar -->
-  <rect x="0" y="0" width="250" height="900" fill="#262730"/>
-  <text x="30" y="45" fill="#ffffff" font-size="20" font-weight="bold">⚡ Energy Platform</text>
-  <line x1="15" y1="60" x2="235" y2="60" stroke="#444" stroke-width="1"/>
-  <text x="30" y="90" fill="#aaa" font-size="13" font-weight="bold">Navigation</text>
-  <rect x="15" y="105" width="220" height="32" rx="5" fill="#ff4b4b" opacity="0.2"/>
-  <text x="30" y="126" fill="#ff4b4b" font-size="14">🏠 Live Dashboard</text>
-  <text x="30" y="160" fill="#ccc" font-size="14">🔍 Anomaly Detection</text>
-  <text x="30" y="190" fill="#ccc" font-size="14">⚖️ Load Dispatch</text>
-  <text x="30" y="220" fill="#ccc" font-size="14">🏭 Asset Health</text>
-  <text x="30" y="250" fill="#ccc" font-size="14">🌱 ESG &amp; ISO 50001</text>
-  <line x1="15" y1="270" x2="235" y2="270" stroke="#444" stroke-width="1"/>
-  <text x="30" y="300" fill="#4CAF50" font-size="13">Status: 🟢 Connected</text>
-  <text x="30" y="325" fill="#aaa" font-size="12">Last Update: Real-time</text>
+  <rect x="0" y="0" width="250" height="900" fill="#f8f9fa"/>
+  <rect x="249" y="0" width="1" height="900" fill="#e0e0e0"/>
+  <text x="30" y="45" fill="#333333" font-size="20" font-weight="bold">⚡ Energy Platform</text>
+  <line x1="15" y1="60" x2="235" y2="60" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="30" y="90" fill="#666666" font-size="13" font-weight="bold">Navigation</text>
+  <rect x="15" y="105" width="220" height="32" rx="5" fill="#e3f2fd"/>
+  <text x="30" y="126" fill="#1565c0" font-size="14" font-weight="bold">🏠 Live Dashboard</text>
+  <text x="30" y="160" fill="#555555" font-size="14">🔍 Anomaly Detection</text>
+  <text x="30" y="190" fill="#555555" font-size="14">⚖️ Load Dispatch</text>
+  <text x="30" y="220" fill="#555555" font-size="14">🏭 Asset Health</text>
+  <text x="30" y="250" fill="#555555" font-size="14">🌱 ESG &amp; ISO 50001</text>
+  <line x1="15" y1="270" x2="235" y2="270" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="30" y="300" fill="#2e7d32" font-size="13">Status: 🟢 Connected</text>
+  <text x="30" y="325" fill="#888888" font-size="12">Last Update: Real-time</text>
 
   <!-- Title -->
-  <text x="290" y="50" fill="#ffffff" font-size="26" font-weight="bold">🏭 Industrial AI Energy Optimization</text>
-  <text x="290" y="80" fill="#aaa" font-size="16">Real-Time Factory Energy Dashboard</text>
-  <line x1="290" y1="95" x2="1160" y2="95" stroke="#333" stroke-width="1"/>
+  <text x="290" y="50" fill="#1a1a1a" font-size="26" font-weight="bold">🏭 Industrial AI Energy Optimization</text>
+  <text x="290" y="80" fill="#666666" font-size="16">Real-Time Factory Energy Dashboard</text>
+  <line x1="290" y1="95" x2="1160" y2="95" stroke="#eeeeee" stroke-width="1"/>
 
-  <!-- KPI Cards Row -->
-  <!-- Card 1: Total Power -->
-  <rect x="290" y="115" width="200" height="95" rx="8" fill="url(#card)" stroke="#333" stroke-width="1"/>
-  <text x="310" y="145" fill="#aaa" font-size="12">Total Power</text>
-  <text x="310" y="175" fill="#ffffff" font-size="24" font-weight="bold">2,450 kW</text>
-  <text x="310" y="198" fill="#4CAF50" font-size="13">▼ -120 kW</text>
+  <!-- KPI Cards -->
+  <rect x="290" y="115" width="200" height="95" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="290" y="115" width="200" height="4" rx="2" fill="#1565c0"/>
+  <text x="310" y="148" fill="#666666" font-size="12">Total Power</text>
+  <text x="310" y="178" fill="#1a1a1a" font-size="24" font-weight="bold">2,450 kW</text>
+  <text x="310" y="200" fill="#2e7d32" font-size="13">▼ -120 kW</text>
 
-  <!-- Card 2: Energy Today -->
-  <rect x="510" y="115" width="200" height="95" rx="8" fill="url(#card)" stroke="#333" stroke-width="1"/>
-  <text x="530" y="145" fill="#aaa" font-size="12">Energy Today</text>
-  <text x="530" y="175" fill="#ffffff" font-size="24" font-weight="bold">18,200 kWh</text>
-  <text x="530" y="198" fill="#4CAF50" font-size="13">▼ -890 kWh</text>
+  <rect x="510" y="115" width="200" height="95" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="510" y="115" width="200" height="4" rx="2" fill="#2e7d32"/>
+  <text x="530" y="148" fill="#666666" font-size="12">Energy Today</text>
+  <text x="530" y="178" fill="#1a1a1a" font-size="24" font-weight="bold">18,200 kWh</text>
+  <text x="530" y="200" fill="#2e7d32" font-size="13">▼ -890 kWh</text>
 
-  <!-- Card 3: Active Anomalies -->
-  <rect x="730" y="115" width="200" height="95" rx="8" fill="url(#card)" stroke="#333" stroke-width="1"/>
-  <text x="750" y="145" fill="#aaa" font-size="12">Active Anomalies</text>
-  <text x="750" y="175" fill="#ffffff" font-size="24" font-weight="bold">3</text>
-  <text x="750" y="198" fill="#ff4b4b" font-size="13">▲ +1</text>
+  <rect x="730" y="115" width="200" height="95" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="730" y="115" width="200" height="4" rx="2" fill="#d32f2f"/>
+  <text x="750" y="148" fill="#666666" font-size="12">Active Anomalies</text>
+  <text x="750" y="178" fill="#1a1a1a" font-size="24" font-weight="bold">3</text>
+  <text x="750" y="200" fill="#d32f2f" font-size="13">▲ +1</text>
 
-  <!-- Card 4: Savings Today -->
-  <rect x="950" y="115" width="200" height="95" rx="8" fill="url(#card)" stroke="#333" stroke-width="1"/>
-  <text x="970" y="145" fill="#aaa" font-size="12">Savings Today</text>
-  <text x="970" y="175" fill="#ffffff" font-size="24" font-weight="bold">$245.30</text>
-  <text x="970" y="198" fill="#4CAF50" font-size="13">▲ +$32.10</text>
+  <rect x="950" y="115" width="200" height="95" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="950" y="115" width="200" height="4" rx="2" fill="#f57c00"/>
+  <text x="970" y="148" fill="#666666" font-size="12">Savings Today</text>
+  <text x="970" y="178" fill="#1a1a1a" font-size="24" font-weight="bold">$245.30</text>
+  <text x="970" y="200" fill="#2e7d32" font-size="13">▲ +$32.10</text>
 
-  <!-- Energy Chart Section -->
-  <text x="290" y="250" fill="#ffffff" font-size="16" font-weight="bold">⚡ Real-Time Energy Consumption</text>
-  <rect x="290" y="265" width="570" height="280" rx="8" fill="url(#card)" stroke="#333" stroke-width="1"/>
-  <!-- Chart Grid Lines -->
-  <line x1="330" y1="290" x2="330" y2="520" stroke="#444" stroke-width="0.5"/>
-  <line x1="330" y1="520" x2="830" y2="520" stroke="#444" stroke-width="0.5"/>
-  <line x1="330" y1="400" x2="830" y2="400" stroke="#333" stroke-width="0.5" stroke-dasharray="4"/>
-  <line x1="330" y1="350" x2="830" y2="350" stroke="#333" stroke-width="0.5" stroke-dasharray="4"/>
-  <line x1="330" y1="450" x2="830" y2="450" stroke="#333" stroke-width="0.5" stroke-dasharray="4"/>
-  <!-- Y-axis labels -->
-  <text x="305" y="295" fill="#888" font-size="10">3000</text>
-  <text x="305" y="355" fill="#888" font-size="10">2500</text>
-  <text x="305" y="405" fill="#888" font-size="10">2000</text>
-  <text x="305" y="455" fill="#888" font-size="10">1500</text>
-  <text x="305" y="525" fill="#888" font-size="10">1000</text>
-  <!-- X-axis labels -->
-  <text x="340" y="538" fill="#888" font-size="10">00:00</text>
-  <text x="440" y="538" fill="#888" font-size="10">06:00</text>
-  <text x="540" y="538" fill="#888" font-size="10">12:00</text>
-  <text x="640" y="538" fill="#888" font-size="10">18:00</text>
-  <text x="740" y="538" fill="#888" font-size="10">24:00</text>
-  <!-- Power line (actual consumption) -->
-  <polyline points="340,460 380,465 420,470 460,450 500,420 540,380 580,350 620,330 660,310 700,320 740,340 780,370 820,420" fill="none" stroke="#ff4b4b" stroke-width="2.5"/>
-  <!-- Baseline line -->
-  <polyline points="340,400 380,400 420,400 460,400 500,400 540,400 580,400 620,400 660,400 700,400 740,400 780,400 820,400" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="5"/>
-  <!-- Legend -->
-  <line x1="340" y1="555" x2="360" y2="555" stroke="#ff4b4b" stroke-width="2"/>
-  <text x="365" y="559" fill="#ccc" font-size="11">Power (kW)</text>
-  <line x1="460" y1="555" x2="480" y2="555" stroke="#666" stroke-width="1.5" stroke-dasharray="5"/>
-  <text x="485" y="559" fill="#ccc" font-size="11">Baseline (kW)</text>
+  <!-- Energy Chart -->
+  <text x="290" y="250" fill="#1a1a1a" font-size="16" font-weight="bold">⚡ Real-Time Energy Consumption</text>
+  <rect x="290" y="265" width="570" height="280" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="330" y1="290" x2="330" y2="520" stroke="#eeeeee" stroke-width="0.5"/>
+  <line x1="330" y1="520" x2="830" y2="520" stroke="#eeeeee" stroke-width="0.5"/>
+  <line x1="330" y1="400" x2="830" y2="400" stroke="#f5f5f5" stroke-width="0.5" stroke-dasharray="4"/>
+  <line x1="330" y1="350" x2="830" y2="350" stroke="#f5f5f5" stroke-width="0.5" stroke-dasharray="4"/>
+  <line x1="330" y1="450" x2="830" y2="450" stroke="#f5f5f5" stroke-width="0.5" stroke-dasharray="4"/>
+  <text x="305" y="295" fill="#999999" font-size="10">3000</text>
+  <text x="305" y="355" fill="#999999" font-size="10">2500</text>
+  <text x="305" y="405" fill="#999999" font-size="10">2000</text>
+  <text x="305" y="455" fill="#999999" font-size="10">1500</text>
+  <text x="305" y="525" fill="#999999" font-size="10">1000</text>
+  <text x="340" y="538" fill="#999999" font-size="10">00:00</text>
+  <text x="440" y="538" fill="#999999" font-size="10">06:00</text>
+  <text x="540" y="538" fill="#999999" font-size="10">12:00</text>
+  <text x="640" y="538" fill="#999999" font-size="10">18:00</text>
+  <text x="740" y="538" fill="#999999" font-size="10">24:00</text>
+  <polyline points="340,460 380,465 420,470 460,450 500,420 540,380 580,350 620,330 660,310 700,320 740,340 780,370 820,420" fill="none" stroke="#1565c0" stroke-width="2.5"/>
+  <polyline points="340,400 380,400 420,400 460,400 500,400 540,400 580,400 620,400 660,400 700,400 740,400 780,400 820,400" fill="none" stroke="#bdbdbd" stroke-width="1.5" stroke-dasharray="5"/>
+  <line x1="340" y1="555" x2="360" y2="555" stroke="#1565c0" stroke-width="2"/>
+  <text x="365" y="559" fill="#555555" font-size="11">Power (kW)</text>
+  <line x1="460" y1="555" x2="480" y2="555" stroke="#bdbdbd" stroke-width="1.5" stroke-dasharray="5"/>
+  <text x="485" y="559" fill="#555555" font-size="11">Baseline (kW)</text>
 
-  <!-- Right Panel: Asset Status -->
-  <text x="890" y="250" fill="#ffffff" font-size="16" font-weight="bold">🏭 Asset Status</text>
-  <rect x="890" y="265" width="270" height="130" rx="8" fill="url(#card)" stroke="#333" stroke-width="1"/>
-  <!-- Bar chart -->
-  <rect x="920" y="290" width="120" height="20" rx="3" fill="#4CAF50"/>
-  <text x="1050" y="305" fill="#ccc" font-size="11">Running: 12</text>
-  <rect x="920" y="318" width="30" height="20" rx="3" fill="#FFC107"/>
-  <text x="1050" y="333" fill="#ccc" font-size="11">Idle: 3</text>
-  <rect x="920" y="346" width="20" height="20" rx="3" fill="#FF9800"/>
-  <text x="1050" y="361" fill="#ccc" font-size="11">Maintenance: 2</text>
-  <rect x="920" y="374" width="10" height="20" rx="3" fill="#f44336"/>
-  <text x="1050" y="389" fill="#ccc" font-size="11">Offline: 1</text>
+  <!-- Asset Status -->
+  <text x="890" y="250" fill="#1a1a1a" font-size="16" font-weight="bold">🏭 Asset Status</text>
+  <rect x="890" y="265" width="270" height="130" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="920" y="290" width="120" height="20" rx="3" fill="#2e7d32"/>
+  <text x="1050" y="305" fill="#555555" font-size="11">Running: 12</text>
+  <rect x="920" y="318" width="30" height="20" rx="3" fill="#f57c00"/>
+  <text x="1050" y="333" fill="#555555" font-size="11">Idle: 3</text>
+  <rect x="920" y="346" width="20" height="20" rx="3" fill="#fbc02d"/>
+  <text x="1050" y="361" fill="#555555" font-size="11">Maintenance: 2</text>
+  <rect x="920" y="374" width="10" height="20" rx="3" fill="#d32f2f"/>
+  <text x="1050" y="389" fill="#555555" font-size="11">Offline: 1</text>
 
-  <!-- Right Panel: Alerts -->
-  <text x="890" y="425" fill="#ffffff" font-size="16" font-weight="bold">🔔 Recent Alerts</text>
-  <rect x="890" y="440" width="270" height="105" rx="8" fill="url(#card)" stroke="#333" stroke-width="1"/>
-  <rect x="905" y="455" width="240" height="25" rx="4" fill="#FFC107" opacity="0.15"/>
-  <text x="915" y="473" fill="#FFC107" font-size="11">⚠️ HVAC-03: Overcooling detected</text>
-  <rect x="905" y="488" width="240" height="25" rx="4" fill="#f44336" opacity="0.15"/>
-  <text x="915" y="506" fill="#f44336" font-size="11">🔴 Compressor-01: Power spike</text>
-  <rect x="905" y="521" width="240" height="25" rx="4" fill="#2196F3" opacity="0.15"/>
-  <text x="915" y="539" fill="#2196F3" font-size="11">ℹ️ Pump-02: Efficiency drop 12%</text>
+  <!-- Alerts -->
+  <text x="890" y="425" fill="#1a1a1a" font-size="16" font-weight="bold">🔔 Recent Alerts</text>
+  <rect x="890" y="440" width="270" height="105" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="905" y="455" width="240" height="25" rx="4" fill="#fff3e0"/>
+  <text x="915" y="473" fill="#e65100" font-size="11">⚠️ HVAC-03: Overcooling detected</text>
+  <rect x="905" y="488" width="240" height="25" rx="4" fill="#ffebee"/>
+  <text x="915" y="506" fill="#c62828" font-size="11">🔴 Compressor-01: Power spike</text>
+  <rect x="905" y="521" width="240" height="25" rx="4" fill="#e3f2fd"/>
+  <text x="915" y="539" fill="#1565c0" font-size="11">ℹ️ Pump-02: Efficiency drop 12%</text>
 
   <!-- Bottom Section -->
-  <line x1="290" y1="580" x2="1160" y2="580" stroke="#333" stroke-width="1"/>
+  <line x1="290" y1="580" x2="1160" y2="580" stroke="#eeeeee" stroke-width="1"/>
 
   <!-- Recommendations -->
-  <text x="290" y="615" fill="#ffffff" font-size="16" font-weight="bold">💡 Top Recommendations</text>
-  <rect x="290" y="630" width="420" height="120" rx="8" fill="url(#card)" stroke="#333" stroke-width="1"/>
-  <circle cx="315" cy="660" r="5" fill="#4CAF50"/>
-  <text x="330" y="665" fill="#ccc" font-size="13">Shift Compressor-02 to off-peak — <tspan fill="#4CAF50">$45/day</tspan></text>
-  <circle cx="315" cy="695" r="5" fill="#4CAF50"/>
-  <text x="330" y="700" fill="#ccc" font-size="13">Adjust HVAC-03 setpoint to 23°C — <tspan fill="#4CAF50">$28/day</tspan></text>
-  <circle cx="315" cy="730" r="5" fill="#4CAF50"/>
-  <text x="330" y="735" fill="#ccc" font-size="13">Schedule Lighting-Zone-B shutdown — <tspan fill="#4CAF50">$15/day</tspan></text>
+  <text x="290" y="615" fill="#1a1a1a" font-size="16" font-weight="bold">💡 Top Recommendations</text>
+  <rect x="290" y="630" width="420" height="120" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <circle cx="315" cy="660" r="5" fill="#2e7d32"/>
+  <text x="330" y="665" fill="#333333" font-size="13">Shift Compressor-02 to off-peak — <tspan fill="#2e7d32" font-weight="bold">$45/day</tspan></text>
+  <circle cx="315" cy="695" r="5" fill="#2e7d32"/>
+  <text x="330" y="700" fill="#333333" font-size="13">Adjust HVAC-03 setpoint to 23°C — <tspan fill="#2e7d32" font-weight="bold">$28/day</tspan></text>
+  <circle cx="315" cy="730" r="5" fill="#2e7d32"/>
+  <text x="330" y="735" fill="#333333" font-size="13">Schedule Lighting-Zone-B shutdown — <tspan fill="#2e7d32" font-weight="bold">$15/day</tspan></text>
 
   <!-- Energy Mix -->
-  <text x="740" y="615" fill="#ffffff" font-size="16" font-weight="bold">📊 Energy Mix</text>
-  <rect x="740" y="630" width="420" height="120" rx="8" fill="url(#card)" stroke="#333" stroke-width="1"/>
-  <text x="770" y="665" fill="#ccc" font-size="12">Grid</text>
-  <rect x="820" y="652" width="195" height="18" rx="3" fill="#2196F3"/>
-  <text x="1020" y="666" fill="#ccc" font-size="11">65%</text>
-  <text x="770" y="700" fill="#ccc" font-size="12">Solar</text>
-  <rect x="820" y="687" width="75" height="18" rx="3" fill="#FFC107"/>
-  <text x="900" y="701" fill="#ccc" font-size="11">25%</text>
-  <text x="770" y="735" fill="#ccc" font-size="12">Battery</text>
-  <rect x="820" y="722" width="30" height="18" rx="3" fill="#4CAF50"/>
-  <text x="855" y="736" fill="#ccc" font-size="11">10%</text>
+  <text x="740" y="615" fill="#1a1a1a" font-size="16" font-weight="bold">📊 Energy Mix</text>
+  <rect x="740" y="630" width="420" height="120" rx="8" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="770" y="665" fill="#555555" font-size="12">Grid</text>
+  <rect x="820" y="652" width="195" height="18" rx="3" fill="#1565c0"/>
+  <text x="1020" y="666" fill="#555555" font-size="11">65%</text>
+  <text x="770" y="700" fill="#555555" font-size="12">Solar</text>
+  <rect x="820" y="687" width="75" height="18" rx="3" fill="#f57c00"/>
+  <text x="900" y="701" fill="#555555" font-size="11">25%</text>
+  <text x="770" y="735" fill="#555555" font-size="12">Battery</text>
+  <rect x="820" y="722" width="30" height="18" rx="3" fill="#2e7d32"/>
+  <text x="855" y="736" fill="#555555" font-size="11">10%</text>
 
   <!-- Footer -->
-  <rect x="0" y="870" width="1200" height="30" fill="#1a1d24"/>
-  <text x="500" y="890" fill="#666" font-size="11">Industrial AI Energy Optimization Platform v1.0 | Streamlit Dashboard</text>
+  <rect x="0" y="870" width="1200" height="30" fill="#f8f9fa"/>
+  <text x="420" y="890" fill="#999999" font-size="11">Industrial AI Energy Optimization Platform v1.0 | Streamlit Dashboard</text>
 </svg>
