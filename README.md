@@ -163,32 +163,66 @@ docker compose exec backend alembic upgrade head
 - **SCADA Integration:** Bi-directional communication with factory systems
 - **Operator Approval:** Human-in-the-loop for critical decisions
 
-## Dashboard Screenshots
+## Dashboard Screenshots (Light Theme)
 
-### Live Dashboard
+### 1. Live Dashboard
 ![Live Dashboard](screenshots/01_live_dashboard.svg)
 
-Real-time power consumption, KPI metrics, asset status, alerts, and optimization recommendations.
+**Main control center** — Shows real-time factory energy status at a glance:
+- **KPI Cards:** Total Power (2,450 kW), Energy Today (18,200 kWh), Active Anomalies (3), Savings ($245.30)
+- **Energy Chart:** 24-hour consumption curve vs baseline with time-axis
+- **Asset Status:** Bar chart showing Running/Idle/Maintenance/Offline counts
+- **Alerts Panel:** Color-coded warnings (red=critical, orange=warning, blue=info)
+- **Recommendations:** Top 3 AI suggestions with estimated dollar savings
+- **Energy Mix:** Grid/Solar/Battery percentage breakdown
 
-### Anomaly Detection
+---
+
+### 2. Anomaly Detection
 ![Anomaly Detection](screenshots/02_anomaly_detection.svg)
 
-AI-powered anomaly detection with timeline visualization, severity filtering, confidence scores, and actionable recommendations.
+**AI-powered waste detection** — Identifies energy anomalies in real-time:
+- **Filters:** Severity, Anomaly Type, Time Range dropdowns
+- **KPI Summary:** Active anomalies (7), Critical (1), Energy Waste (342 kWh/day), Cost Impact ($41.04/day)
+- **Timeline Chart:** Blue anomaly score line with red threshold (0.85) and red dot markers for detected anomalies
+- **Anomalies Table:** 5 active issues with Asset, Type, Severity badge (pill-shaped), Confidence %, Energy Waste, Cost, Time detected
+- **Detail Panel:** Expandable view with root cause analysis, baseline vs actual comparison, and Approve/Dismiss action buttons
 
-### Load Dispatch & Optimization
+---
+
+### 3. Load Dispatch & Optimization
 ![Load Dispatch](screenshots/03_load_dispatch.svg)
 
-24-hour load profiles, load shifting strategies, peak shaving recommendations, and demand response tracking.
+**Intelligent load management** — Optimizes when and how machines consume power:
+- **KPI Cards:** Current Demand (2,450 kW), Demand Limit (3,000 kW), Peak Today (2,890 kW), Load Factor (78%)
+- **Load Profile Chart:** Blue=actual consumption, Green dashed=optimized target, Red dashed=demand limit line
+- **Load Shifting Table:** Assets that can move to off-peak hours (Compressor-02→$45/day, Pump-04→$22/day, Chiller-02→$58/day)
+- **Savings Summary:** Daily ($312.50), Monthly ($9,375), CO₂ reduction (156 kg/day)
+- **Demand Response:** Green status bar showing 92.5% achievement of 200 kW target
 
-### Asset Health & Monitoring
+---
+
+### 4. Asset Health & Monitoring
 ![Asset Health](screenshots/04_asset_health.svg)
 
-Asset inventory with health scores, maintenance scheduling, fault tracking, and efficiency monitoring.
+**Equipment health tracking** — Predictive maintenance and status monitoring:
+- **KPI Cards:** Total Assets (18), Avg Health (87.3%), Maintenance Due (2), Faults (1)
+- **Asset Table:** Name, Type, Status badge (green=Running, red=Fault, yellow=Idle), Power, Health %, Efficiency, Last Maintenance
+- **Fault Highlight:** Compressor-01 row highlighted in red (Health: 45%, 60 days since maintenance)
+- **Maintenance Schedule:** 3 upcoming jobs with priority badges (Urgent/High/Medium) and due dates
+- **Health Distribution:** Horizontal bar chart showing asset counts by health range (90-100%, 80-89%, 70-79%, <70%)
 
-### ESG & ISO 50001 Reporting
+---
+
+### 5. ESG & ISO 50001 Reporting
 ![ESG Reporting](screenshots/05_esg_reporting.svg)
 
-Carbon emissions trends, ISO 50001 compliance tracking, year-over-year improvements, and energy source breakdown.
+**Sustainability & compliance** — Carbon tracking and regulatory reporting:
+- **KPI Cards:** CO₂ Emissions (4,250 kg ▼-320), Energy Intensity (0.42 kWh/unit), Renewable % (25%), ISO 50001 Score (78.5%)
+- **Carbon Trend Chart:** 12-month declining emissions line (green) with orange target line
+- **ISO 50001 Checklist:** 7 requirements with status (✅ Complete, ⚠️ In Progress, ❌ Pending) and percentage scores
+- **Year-over-Year:** Three progress bars — Energy Reduction (12.3%/15%), CO₂ Reduction (18.5%/20%), Cost Savings ($142K/$150K)
+- **Energy Sources:** Horizontal bars — Grid 60%, Solar 25%, Battery 10%, Gas 5%
 
 ## Workflow
 
